@@ -132,7 +132,9 @@
 )
 
 (defn author-names [books]
-(let [author-name (fn[x] (map :name (:authors x)))]   (apply concat (map author-name books)) )
+
+(let [author-name (fn[x] (map :name (:authors x)))] (apply concat (map author-name books)) )
+
 )
  
 
@@ -143,21 +145,22 @@
 (defn stars [n]
   :-)
 
-^(defn toggle [a-set elem]
+(defn toggle [a-set elem]
 (cond (= true (contains? a-set elem)) (disj a-set elem)
 :else (conj a-set elem)
 )
    
 )
 
-
 (defn contains-duplicates? [a-seq]
-   (let [x (set a-seq)] (cond (= (count x) (count a-seq)) false :else true))
+    (if (= (count (set a-seq)) (count a-seq)) false  true)
 )
 
 (defn old-book->new-book [book]
-  :-)
-
+ (assoc book :authors (set (book :authors)))   
+)
+ 
+ 
 (defn has-author? [book author]
   :-)
 
